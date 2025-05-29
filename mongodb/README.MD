@@ -2,7 +2,7 @@
 docker build -t test-image-mongo -f Dockerfile.mongo .
 
 # Run
-docker run --name test-container-mongo -d -p 27017:27017 test-image-mongo
+docker run --name test-container-mongo --network test-network -d -p 27017:27017 test-image-mongo
 
 # Test
 netstat -tlnp | grep 27017
