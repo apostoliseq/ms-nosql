@@ -1,0 +1,11 @@
+from flask import Flask
+from pymongo import MongoClient
+
+app = Flask(__name__)
+
+@app.route('/test-python')
+def hello_world():
+
+    return "Hello World!"
+
+app.run(host='0.0.0.0', port=5000, debug=True)

@@ -1,0 +1,5 @@
+# Flask - The lightweight web framework that creates our API endpoints
+flask==3.1.1
+
+# PyMongo - The official MongoDB driver for Python
+pymongo==4.13.0
