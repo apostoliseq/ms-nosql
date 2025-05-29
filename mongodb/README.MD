@@ -1,17 +1,16 @@
 # Build
-docker build -t test-image-mongo -f Dockerfile.mongo .
+$ docker build -t test-image-mongo -f Dockerfile.mongo .
 
 # Run
-docker run --name test-container-mongo --network test-network -d -p 27017:27017 test-image-mongo
+$ docker run --name test-container-mongo --network test-network -d -p 27017:27017 test-image-mongo
 
 # Test
-netstat -tlnp | grep 27017
-
+$ netstat -tlnp | grep 27017
 tcp        0      0 0.0.0.0:27017           0.0.0.0:*               LISTEN      -                   
 tcp6       0      0 :::27017                :::*                    LISTEN      -  
 
 # Access
-docker exec -it test-container-mongo bash
+$ docker exec -it test-container-mongo bash
 
 ## Connect via mongosh
 mongosh # connects to mongodb://127.0.0.1:27017 by default

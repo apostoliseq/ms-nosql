@@ -7,9 +7,9 @@ client = MongoClient('mongodb://test-container-mongo:27017/')
 db = client['test']
 collection = db['coll']
 
-@app.route('/test-python')
+@app.route('/')
 def hello_world():
-    return "Hello World!"
+    return "python: Hello World!"
 
 @app.route('/test-get')
 def get_one():

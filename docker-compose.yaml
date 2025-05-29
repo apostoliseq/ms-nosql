@@ -11,6 +11,16 @@ services:
     volumes:
       - mongo-data:/data/db
 
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.nginx
+    container_name: test-container-nginx
+    ports:
+      - "8080:80"
+    networks:
+      - test-network
+
   python-api:
     build:
       context: ./microservices/python
@@ -21,13 +31,13 @@ services:
     networks:
       - test-network
 
-  nginx:
+  php-api:
     build:
-      context: ./nginx
-      dockerfile: Dockerfile.nginx
-    container_name: test-container-nginx
+      context: ./microservices/php
+      dockerfile: Dockerfile.php
+    container_name: test-container-php
     ports:
-      - "8080:80"
+      - "5001:5001"
     networks:
       - test-network
 
