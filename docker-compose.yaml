@@ -1,0 +1,40 @@
+services:
+  mongodb:
+    build:
+      context: ./mongodb
+      dockerfile: Dockerfile.mongo
+    container_name: test-container-mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - test-network
+    volumes:
+      - mongo-data:/data/db
+
+  python-api:
+    build:
+      context: ./microservices/python
+      dockerfile: Dockerfile.python
+    container_name: test-container-python
+    ports:
+      - "5000:5000"
+    networks:
+      - test-network
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.nginx
+    container_name: test-container-nginx
+    ports:
+      - "8080:80"
+    networks:
+      - test-network
+
+networks:
+  test-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local

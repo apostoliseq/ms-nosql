@@ -1,1 +1,2 @@
 FROM mongodb/mongodb-community-server:8.0.9-ubi8
+COPY init-mongo.js /docker-entrypoint-initdb.d/
