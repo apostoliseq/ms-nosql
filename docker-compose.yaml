@@ -37,9 +37,19 @@ services:
       dockerfile: Dockerfile.php
     container_name: test-container-php
     ports:
-      - "5001:5001"
+      - "5001:5000"
     networks:
       - test-network
+
+  # java-api:
+  #   build:
+  #     context: ./microservices/java
+  #     dockerfile: Dockerfile.java
+  #   container_name: test-container-java
+  #   ports:
+  #     - "5002:5002"
+  #   networks:
+  #     - test-network
 
 networks:
   test-network:

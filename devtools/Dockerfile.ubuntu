@@ -1,0 +1,11 @@
+FROM ubuntu:22.04
+
+RUN apt update -y && \
+    apt install -y curl
+
+RUN curl -Ls https://sh.jbang.dev | bash -s - trust add https://repo1.maven.org/maven2/io/quarkus/quarkus-cli/ && \
+    curl -Ls https://sh.jbang.dev | bash -s - app install --fresh --force quarkus@quarkusio
+
+WORKDIR /workspace
+
+CMD ["/bin/bash"]
